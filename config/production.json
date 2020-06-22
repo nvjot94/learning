@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://nvjotsingh:nvjotsingh@cluster0-epsic.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
+}

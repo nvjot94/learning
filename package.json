@@ -9,8 +9,9 @@
     "client": "npm start --prefix client",
     "clientinstall": "npm install --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "postinstall": "npm run clientinstall",
-    "postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "postinstall": "npm run build",
+    "test": "mocha test/*.js --reporter spec",
+    "build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
@@ -24,7 +25,10 @@
     "mongoose": "^5.9.5"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "concurrently": "^5.1.0",
-    "nodemon": "^2.0.2"
+    "mocha": "^8.0.1",
+    "nodemon": "^2.0.2",
+    "request": "^2.88.2"
   }
 }

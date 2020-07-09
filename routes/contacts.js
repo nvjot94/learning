@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const {check, validationResult} = require('express-validator');
-
+const logger = require('../middleware/logger');
 const User = require('../models/User');
 const Contact = require('../models/Contact');
 
@@ -15,6 +15,13 @@ router.get('/', auth, async (req, res) => {
       date: -1,
     });
     res.json(contacts);
+
+    logger.log({
+      level:'info',
+      message: `  contact ${req.method} by ${req.user.id} with total contacts transferred as ${contacts.length}`
+    });
+
+
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -54,6 +61,11 @@ router.post(
       const contact = await newContact.save();
 
       res.json(contact);
+
+      logger.log({
+        level:'info',
+        message: ` New contact ${req.method} by ${req.user.id} with name as ${name} and phone # ${phone}`
+      });
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
@@ -91,6 +103,11 @@ router.put('/:id', auth, async (req, res) => {
     );
 
     res.json(contact);
+
+    logger.log({
+      level:'info',
+      message: ` New contact ${req.method} by ${req.user.id} with name as ${contact.name} and phone # ${contact.phone}`
+    });
   } catch (err) {
     console.error(er.message);
     res.status(500).send('Server Error');
@@ -114,6 +131,10 @@ router.delete('/:id', auth, async (req, res) => {
     await Contact.findByIdAndRemove(req.params.id);
 
     res.json({msg: 'Contact removed'});
+    logger.log({
+      level:'info',
+      message: ` New contact ${req.method} by ${req.user.id} with name as ${contact.name} and phone # ${contact.phone}`
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

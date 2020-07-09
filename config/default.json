@@ -1,4 +1,4 @@
 {
-	"mongoURI": "mongodb://nvjotsingh:nvjotsingh@cluster0-shard-00-00-qfho4.mongodb.net:27017,cluster0-shard-00-01-qfho4.mongodb.net:27017,cluster0-shard-00-02-qfho4.mongodb.net:27017/contacts?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
+	"mongoURI": "mongodb+srv://nvjotsingh:nvjotsingh@cluster0.w5nj5.mongodb.net/contacts?retryWrites=true&w=majority",
 	"jwtSecret": "contact-intact"
 }

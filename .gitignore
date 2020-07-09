@@ -18,3 +18,7 @@ build
 
 # local db config
 .env
+
+
+#log files
+logs
